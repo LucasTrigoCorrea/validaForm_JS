@@ -77,13 +77,8 @@ class ValidaFormulario {
 
     if(!usuario) return valid;
 
-    if(usuario.length < 3 || usuario.length > 12) {
-      this.criaErro(campo, 'Usuário precisa ter entre 3 e 12 caracteres.');
-      valid = false;
-    }
-
-    if(!usuario.match(/^[a-zA-Z0-9]+$/g)) {
-      this.criaErro(campo, 'Nome de usuário precisar conter apenas letras e/ou números.');
+    if(!usuario.match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
+      this.criaErro(campo, 'Email inválido');
       valid = false;
     }
 
